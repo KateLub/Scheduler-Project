@@ -31,7 +31,6 @@ public class EventList {
         listName = name;
     }
 
-    //REQUIRES:
     //MODIFIES: this
     //EFFECTS: if Event e not in List (events), adds e to list and returns true
     //         if e already in list, returns false and changes nothing
@@ -42,10 +41,10 @@ public class EventList {
             }
         }
         events.add(e);
+        sortEventList();
         return true;
     }
 
-    //REQUIRES:
     //EFFECTS: if Event e with matching name to eventName is in List, returns e
     //         if e with matching name not found, returns null
     public Event findEvent(String eventName) {
@@ -57,7 +56,6 @@ public class EventList {
         return null;
     }
 
-    //REQUIRES:
     //MODIFIES: this
     //EFFECTS: if findEvent method finds matching Event to eventName, event removed and returns true
     //         if findEvent method returns null (no event w/t that name) return false
@@ -71,7 +69,6 @@ public class EventList {
         }
     }
 
-    //REQUIRES:
     //MODIFIES: this
     //EFFECTS: sorts list in chronological order according to date of each Event
     public void sortEventList() {

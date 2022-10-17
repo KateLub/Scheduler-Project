@@ -36,19 +36,27 @@ public class Event {
     }
 
     //setters
+    //MODIFIES: this
+    //EFFECT: change eventName to given name
     public void changeEventName(String name) {
         eventName = name;
     }
 
+    //REQUIRES: String date passed in by user MUST be in format "YYYY-MM-DD"
+    //MODIFIES: this
+    //EFFECT: change eventDueDate to given date
     public void changeEventDueDate(String date) {
         eventDueDate = LocalDate.parse(date);
     }
 
+    //MODIFIES: this
+    //EFFECT: change eventDescription to given description
     public void changeEventDescription(String description) {
         eventDescription = description;
     }
 
-    //EFFECT: change status of isCompleted to true;
+    //MODIFIES: this
+    //EFFECT: change status of isCompleted to true
     public void completeEvent() {
         isCompleted = true;
     }
