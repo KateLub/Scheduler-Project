@@ -10,6 +10,7 @@ public class Event {
     String eventDescription;
     Boolean isCompleted;
 
+    //REQUIRES: String date must be in format "YYYY-MM-DD"
     //EFFECTS: eventName set to name, eventDueDate set to date, eventDescription set to description
     public Event(String name, String date, String description) {
         eventName = name;
