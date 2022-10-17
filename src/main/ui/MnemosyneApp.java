@@ -111,6 +111,7 @@ public class MnemosyneApp {
             System.out.println("Please make sure you are typing in the correct commands,");
             System.out.println("and the correct name for any events");
         }
+        list.sortEventList();
     }
 
     //MODIFIES: this
@@ -120,8 +121,7 @@ public class MnemosyneApp {
         String eventName = input.nextLine();
         if (!list.removeEventFromList(eventName)) {
             System.out.println("Oops, there seems to have been an error");
-            System.out.println("Please make sure you are typing in the correct commands,");
-            System.out.println("and the correct name for any events");
+            System.out.println("Please make sure you are typing in the correct name for any events");
         }
     }
 
@@ -143,8 +143,7 @@ public class MnemosyneApp {
             }
         } else {
             System.out.println("Oops, there seems to have been an error");
-            System.out.println("Please make sure you are typing in the correct commands,");
-            System.out.println("and the correct name for any events");
+            System.out.println("Please make sure you are typing in the correct name for any events");
         }
     }
 
@@ -164,6 +163,7 @@ public class MnemosyneApp {
                 System.out.println("What is the new date?");
                 String date = input.nextLine();
                 e.changeEventDueDate(date);
+                list.sortEventList();
             } else {
                 System.out.println("What is the new description?");
                 String description = input.nextLine();
@@ -171,8 +171,7 @@ public class MnemosyneApp {
             }
         } else {
             System.out.println("Oops, there seems to have been an error");
-            System.out.println("Please make sure you are typing in the correct commands,");
-            System.out.println("and the correct name for any events");
+            System.out.println("Please make sure you are typing in the correct name for any events");
         }
     }
 }

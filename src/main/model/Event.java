@@ -2,7 +2,7 @@ package model;
 
 import java.time.LocalDate;
 
-// represents an Event with different attributes
+// represents an Event with an event name, due-date, description, and whether it is completed or not
 public class Event {
 
     String eventName;

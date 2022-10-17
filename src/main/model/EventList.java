@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+// represents a list that has a name, and contains Events
 public class EventList {
 
     private String listName;
@@ -41,7 +42,6 @@ public class EventList {
             }
         }
         events.add(e);
-        sortEventList();
         return true;
     }
 

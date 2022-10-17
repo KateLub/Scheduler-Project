@@ -71,6 +71,13 @@ public class EventListTest {
     }
 
     @Test
+    public void testFindInList(){
+        assertTrue(list1.addEventToList(e1));
+        testList.add(e1);
+        assertEquals(list1.findEvent(e1.getEventName()), e1);
+    }
+
+    @Test
     public void testRemoveEventInList(){
         assertTrue(list1.addEventToList(e1));
         testList.add(e1);
