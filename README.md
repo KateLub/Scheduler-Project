@@ -36,3 +36,12 @@ are due, to the furthest
 * As a user, I want to be able to update/change details of the events 
 without making a new event
 * As a user, I want to be able to mark certain events as complete
+
+## User Stories for Phase 1
+
+* As a user, I want to be able to save all my events to file
+* As a user, I want to be able to load all my events from file
+* As a user, I want to get the option of saving or not the recent changes(since the last downloaded version) whenever 
+I quit the application
+* As a user, I want to get the option of opening the last downloaded version from file, 
+whenever I start the application
