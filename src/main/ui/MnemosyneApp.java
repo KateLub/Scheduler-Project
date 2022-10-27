@@ -2,19 +2,30 @@ package ui;
 
 import model.Event;
 import model.EventList;
+import persistance.JsonReader;
+import persistance.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class MnemosyneApp {
 
     private final Scanner input;
-    private final EventList list;
+    private EventList list;
     private String userInput;
+
+    private static final String JSON_STORE = "./data/myFile.json";
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+
 
     //MODIFIES: this
     //EFFECTS: runs Mnemosyne application and processes user input
     public MnemosyneApp() {
         this.input = new Scanner(System.in);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         this.list = new EventList("New Events List");
         boolean isProgramRunning = true;
         appIntro();
@@ -50,6 +61,8 @@ public class MnemosyneApp {
         System.out.println("To complete an event, type \"complete event\"");
         System.out.println("To change information on an existing event, type \"change event event_name\"");
         System.out.println("To see all of your events, type \"see event list\"");
+        System.out.println("To save all events to file, type \"save\"");
+        System.out.println("To load all events from file, type \"load\"");
         System.out.println("To leave the program, type \"cancel\"");
     }
 
@@ -68,6 +81,10 @@ public class MnemosyneApp {
         } else if (userInput.equals("see event list")) {
             System.out.println("Here are your events:");
             printList(list);
+        } else if (userInput.equals("save")) {
+            saveWorkRoom();
+        } else if (userInput.equals("load")) {
+            loadWorkRoom();
         } else {
             System.out.println("Oops, there seems to have been an error");
             System.out.println("Please make sure you are typing in the correct commands!");
@@ -172,6 +189,29 @@ public class MnemosyneApp {
         } else {
             System.out.println("Oops, there seems to have been an error");
             System.out.println("Please make sure you are typing in the correct name for any events");
+        }
+    }
+
+    // EFFECTS: saves the workroom to file
+    private void saveWorkRoom() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(list);
+            jsonWriter.close();
+            System.out.println("Saved " + list.getListName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadWorkRoom() {
+        try {
+            list = jsonReader.read();
+            System.out.println("Loaded " + list.getListName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 }

@@ -1,9 +1,12 @@
 package model;
 
+import org.json.JSONObject;
+import persistance.Writable;
+
 import java.time.LocalDate;
 
 // represents an Event with an event name, due-date, description, and whether it is completed or not
-public class Event {
+public class Event implements Writable {
 
     String eventName;
     LocalDate eventDueDate;
@@ -62,4 +65,14 @@ public class Event {
         isCompleted = true;
     }
 
+    // The following method was adapted from Thingy class in:
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("eventName", eventName);
+        json.put("dueDate", eventDueDate);
+        json.put("eventDescription", eventDescription);
+        return json;
+    }
 }
