@@ -1,0 +1,20 @@
+{
+    "listName": "UBC",
+    "events": [
+        {
+            "dueDate": "2021-12-01",
+            "eventDescription": "sdf",
+            "eventName": "midterm"
+        },
+        {
+            "dueDate": "2022-12-01",
+            "eventDescription": "sfg",
+            "eventName": "midterm1"
+        },
+        {
+            "dueDate": "2022-11-06",
+            "eventDescription": "sfdkn",
+            "eventName": "project"
+        }
+    ]
+}

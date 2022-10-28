@@ -15,7 +15,7 @@ import org.json.*;
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 // Represents a reader that reads EventList from JSON data stored in file
 public class JsonReader {
-    private String source;
+    private final String source;
 
     // EFFECTS: constructs reader to read from myFile
     public JsonReader(String source) {
@@ -27,6 +27,7 @@ public class JsonReader {
     public EventList read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
+
         return parseEventList(jsonObject);
     }
 
@@ -35,7 +36,7 @@ public class JsonReader {
         StringBuilder contentBuilder = new StringBuilder();
 
         try (Stream<String> stream = Files.lines(Paths.get(source), StandardCharsets.UTF_8)) {
-            stream.forEach(s -> contentBuilder.append(s));
+            stream.forEach(contentBuilder::append);
         }
 
         return contentBuilder.toString();
@@ -63,8 +64,8 @@ public class JsonReader {
     // EFFECTS: parses event from JSON object and adds them to event list
     private void addEachEventFromList(EventList el, JSONObject jsonObject) {
         String eventName = jsonObject.getString("eventName");
-        String eventDueDate = jsonObject.getString("dueDate");;
-        String eventDescription = jsonObject.getString("eventDescription");;
+        String eventDueDate = jsonObject.getString("dueDate");
+        String eventDescription = jsonObject.getString("eventDescription");
         Event event = new Event(eventName, eventDueDate, eventDescription);
         el.addEventToList(event);
     }
