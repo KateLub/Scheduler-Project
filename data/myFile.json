@@ -1,8 +1,9 @@
 {
-    "listName": "UBC Due Dates",
+    "listName": "UBC Due-Date",
     "events": [{
         "dueDate": "2022-12-01",
         "eventDescription": "sdf",
-        "eventName": "midterm"
+        "eventName": "midterm 1",
+        "eventCompleted?": true
     }]
 }

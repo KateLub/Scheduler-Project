@@ -4,16 +4,16 @@ import model.EventList;
 import org.json.JSONObject;
 import java.io.*;
 
-// Methods and comments were adapted from JsonWriter class in:
+// Class was adapted from JsonWriter class in:
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 // Represents a writer that writes JSON representation of EventList to file
-public class JsonWriter {
+public class JsonWriteToFile {
     private static final int TAB = 4;
     private PrintWriter writer;
     private String destination;
 
     // EFFECTS: constructs writer to write to destination file
-    public JsonWriter(String destination) {
+    public JsonWriteToFile(String destination) {
         this.destination = destination;
     }
 
@@ -21,7 +21,7 @@ public class JsonWriter {
     // EFFECTS: opens writer; throws FileNotFoundException if destination file cannot
     // be opened for writing
     public void open() throws FileNotFoundException {
-        writer = new PrintWriter(new File(destination));
+        writer = new PrintWriter(destination);
     }
 
     // MODIFIES: this

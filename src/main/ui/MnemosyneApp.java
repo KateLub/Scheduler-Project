@@ -2,8 +2,8 @@ package ui;
 
 import model.Event;
 import model.EventList;
-import persistance.JsonReader;
-import persistance.JsonWriter;
+import persistance.JsonReadFromFile;
+import persistance.JsonWriteToFile;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -16,16 +16,16 @@ public class MnemosyneApp {
     private String userInput;
 
     private static final String JSON_STORE = "./data/myFile.json";
-    private JsonWriter jsonWriter;
-    private JsonReader jsonReader;
+    private JsonWriteToFile jsonWriter;
+    private JsonReadFromFile jsonReader;
 
 
     //MODIFIES: this
     //EFFECTS: runs Mnemosyne application and processes user input
     public MnemosyneApp() {
         this.input = new Scanner(System.in);
-        jsonWriter = new JsonWriter(JSON_STORE);
-        jsonReader = new JsonReader(JSON_STORE);
+        jsonWriter = new JsonWriteToFile(JSON_STORE);
+        jsonReader = new JsonReadFromFile(JSON_STORE);
         this.list = new EventList("New Events List");
         boolean isProgramRunning = true;
         appIntro();
@@ -33,20 +33,38 @@ public class MnemosyneApp {
             appIntroInstr();
             userInput = input.nextLine();
 
-            if (!userInput.equals("cancel")) {
-                System.out.println("This is great news!");
+            if (!userInput.equals("close")) {
                 provideResponse(userInput);
             } else {
-                System.out.println("See you next time!");
+                System.out.println("Would you like to save your events? (yes/no)");
+                userInput = input.nextLine();
+                if (userInput.equals("yes")) {
+                    saveEventList();
+                }
                 isProgramRunning = false;
             }
         }
     }
 
     //MODIFIES: this
-    //EFFECTS: prints welcome message and completes naming of new Event List
+    //EFFECTS: prints welcome message and checks whether user wants to load previous work
     public void appIntro() {
         System.out.println("Welcome to Mnemosyne!");
+        loadEventList();
+        if (list.getListName().equals("New Event List") && list.getEvents().isEmpty()) {
+            namingList();
+        } else {
+            System.out.println("Would you like to load your previous work? (yes/no)");
+            userInput = input.nextLine();
+            if (userInput.equals("no")) {
+                namingList();
+            }
+        }
+    }
+
+    //MODIFIES: this
+    //EFFECTS: completes naming of new Event List
+    public void namingList() {
         System.out.println("What would you like to call this " + list.getListName() + " ?");
         userInput = input.nextLine();
         list.setListName(userInput);
@@ -55,15 +73,13 @@ public class MnemosyneApp {
 
     //EFFECTS:displays all app instructions/options for user
     public void appIntroInstr() {
-        System.out.println("What would you like to do?");
+        System.out.println("What would you like to do with your list " + list.getListName() + "?");
         System.out.println("To add a new event, type \"make new event\"");
         System.out.println("To remove an event, type \"delete event\"");
         System.out.println("To complete an event, type \"complete event\"");
         System.out.println("To change information on an existing event, type \"change event event_name\"");
         System.out.println("To see all of your events, type \"see event list\"");
-        System.out.println("To save all events to file, type \"save\"");
-        System.out.println("To load all events from file, type \"load\"");
-        System.out.println("To leave the program, type \"cancel\"");
+        System.out.println("To leave the program, type \"close\"");
     }
 
 
@@ -81,10 +97,6 @@ public class MnemosyneApp {
         } else if (userInput.equals("see event list")) {
             System.out.println("Here are your events:");
             printList(list);
-        } else if (userInput.equals("save")) {
-            saveWorkRoom();
-        } else if (userInput.equals("load")) {
-            loadWorkRoom();
         } else {
             System.out.println("Oops, there seems to have been an error");
             System.out.println("Please make sure you are typing in the correct commands!");
@@ -192,24 +204,26 @@ public class MnemosyneApp {
         }
     }
 
-    // EFFECTS: saves the workroom to file
-    private void saveWorkRoom() {
+    // The following two methods were adapted from WorkRoomApp class in:
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
+    // EFFECTS: saves the eventList to file
+    private void saveEventList() {
         try {
             jsonWriter.open();
             jsonWriter.write(list);
             jsonWriter.close();
-            System.out.println("Saved " + list.getListName() + " to " + JSON_STORE);
+            System.out.println(list.getListName() + " and all its' events has been saved to " + JSON_STORE);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }
     }
 
     // MODIFIES: this
-    // EFFECTS: loads workroom from file
-    private void loadWorkRoom() {
+    // EFFECTS: loads eventList from file
+    private void loadEventList() {
         try {
             list = jsonReader.read();
-            System.out.println("Loaded " + list.getListName() + " from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }

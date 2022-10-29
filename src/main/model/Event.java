@@ -73,6 +73,7 @@ public class Event implements Writable {
         json.put("eventName", eventName);
         json.put("dueDate", eventDueDate);
         json.put("eventDescription", eventDescription);
+        json.put("eventCompleted?", isCompleted);
         return json;
     }
 }

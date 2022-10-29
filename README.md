@@ -37,7 +37,7 @@ are due, to the furthest
 without making a new event
 * As a user, I want to be able to mark certain events as complete
 
-## User Stories for Phase 1
+## User Stories for Phase 2
 
 * As a user, I want to be able to save all my events to file
 * As a user, I want to be able to load all my events from file

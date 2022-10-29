@@ -4,17 +4,20 @@
         {
             "dueDate": "2021-12-01",
             "eventDescription": "sdf",
-            "eventName": "midterm"
+            "eventName": "midterm",
+            "eventCompleted?": true
         },
         {
             "dueDate": "2022-12-01",
             "eventDescription": "sfg",
-            "eventName": "midterm1"
+            "eventName": "midterm1",
+            "eventCompleted?": false
         },
         {
             "dueDate": "2022-11-06",
             "eventDescription": "sfdkn",
-            "eventName": "project"
+            "eventName": "project",
+            "eventCompleted?": true
         }
     ]
 }

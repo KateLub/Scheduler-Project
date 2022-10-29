@@ -96,14 +96,12 @@ public class EventList implements Writable {
         return json;
     }
 
-    // EFFECTS: returns things in this workroom as a JSON array
+    // EFFECTS: returns things in this eventList as a JSON array
     private JSONArray eventsToJson() {
         JSONArray jsonArray = new JSONArray();
-
         for (Event e : events) {
             jsonArray.put(e.toJson());
         }
-
         return jsonArray;
     }
 }

@@ -11,14 +11,14 @@ import java.util.stream.Stream;
 
 import org.json.*;
 
-// Methods and comments were adapted from JsonReader class in:
+// Class was adapted from JsonReader class in:
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 // Represents a reader that reads EventList from JSON data stored in file
-public class JsonReader {
+public class JsonReadFromFile {
     private final String source;
 
     // EFFECTS: constructs reader to read from myFile
-    public JsonReader(String source) {
+    public JsonReadFromFile(String source) {
         this.source = source;
     }
 
@@ -46,13 +46,13 @@ public class JsonReader {
     private EventList parseEventList(JSONObject jsonObject) {
         String listName = jsonObject.getString("listName");
         EventList el = new EventList(listName);
-        addAllEventsFromList(el, jsonObject);
+        addEventsFromList(el, jsonObject);
         return el;
     }
 
     // MODIFIES: el
     // EFFECTS: parses events from JSON object and adds them to event list
-    private void addAllEventsFromList(EventList el, JSONObject jsonObject) {
+    private void addEventsFromList(EventList el, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("events");
         for (Object json : jsonArray) {
             JSONObject nextEvent = (JSONObject) json;
@@ -61,12 +61,16 @@ public class JsonReader {
     }
 
     // MODIFIES: el
-    // EFFECTS: parses event from JSON object and adds them to event list
+    // EFFECTS: parses each event from JSON object and adds them to event list
     private void addEachEventFromList(EventList el, JSONObject jsonObject) {
         String eventName = jsonObject.getString("eventName");
         String eventDueDate = jsonObject.getString("dueDate");
         String eventDescription = jsonObject.getString("eventDescription");
+        boolean isCompleted = jsonObject.getBoolean("eventCompleted?");
         Event event = new Event(eventName, eventDueDate, eventDescription);
+        if (isCompleted) {
+            event.completeEvent();
+        }
         el.addEventToList(event);
     }
 }

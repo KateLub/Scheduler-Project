@@ -6,12 +6,14 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-// Methods and comments were adapted from JsonTest class in:
+// This test class was adapted from JsonTest class in:
 // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 public class JsonTest {
-    protected void checkEvent(String eventName, String eventDueDate, String description, Event event) {
+
+    protected void checkEvent(String eventName, String eventDueDate, String description, Boolean isCompleted, Event event) {
         assertEquals(eventName, event.getEventName());
         assertEquals(LocalDate.parse(eventDueDate), event.getEventDueDate());
         assertEquals(description, event.getEventDescription());
+        assertEquals(isCompleted, event.getIsCompleted());
     }
 }
