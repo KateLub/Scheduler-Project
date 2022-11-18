@@ -81,7 +81,6 @@ public class EventList implements Writable {
         Collections.sort(events, new Comparator<Event>() {
             @Override
             public int compare(Event e1, Event e2) {
-                // compare two instance of `Event` and return `int` as result.
                 return e1.getEventDueDate().compareTo(e2.getEventDueDate());
             }
         });

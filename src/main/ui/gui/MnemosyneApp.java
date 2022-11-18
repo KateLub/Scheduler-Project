@@ -134,8 +134,6 @@ public class MnemosyneApp {
         JOptionPane.showMessageDialog(frame, "The name of your list is now " + list.getListName());
     }
 
-    // The following two methods were adapted from WorkRoomApp class in:
-    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 
     public void changeHeading(String label) {
         lblHeading.setText(label);
@@ -221,17 +219,16 @@ public class MnemosyneApp {
 
     public void completeEvent() {
         JMenuItem completeEvent = new JMenuItem("Complete");
-        completeEvent.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                list.findEvent((String) model.getValueAt(table.getSelectedRow(), 0)).completeEvent();
-                model.setValueAt("yes", table.getSelectedRow(), 3);
-                JOptionPane.showMessageDialog(frame, "Right-click performed on table and choose Complete");
-            }
+        completeEvent.addActionListener(e -> {
+            list.findEvent((String) model.getValueAt(table.getSelectedRow(), 0)).completeEvent();
+            model.setValueAt("yes", table.getSelectedRow(), 3);
+            JOptionPane.showMessageDialog(frame, "Right-click performed on table and choose Complete");
         });
         popupMenu.add(completeEvent);
     }
 
+    // The following two methods were adapted from WorkRoomApp class in:
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 
     // EFFECTS: saves the eventList to file
     protected void saveEventList() {
