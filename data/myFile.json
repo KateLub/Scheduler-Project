@@ -1,9 +1,23 @@
 {
-    "listName": "UBC Due-Date",
-    "events": [{
-        "dueDate": "2022-12-01",
-        "eventDescription": "sdf",
-        "eventName": "midterm 1",
-        "eventCompleted?": true
-    }]
+    "listName": "My Important Dates",
+    "events": [
+        {
+            "dueDate": "2022-11-06",
+            "eventDescription": "Optional Description",
+            "eventName": "test1",
+            "eventCompleted?": true
+        },
+        {
+            "dueDate": "2022-11-07",
+            "eventDescription": "test description",
+            "eventName": "Midterm 1",
+            "eventCompleted?": false
+        },
+        {
+            "dueDate": "2022-11-09",
+            "eventDescription": "Optional Description",
+            "eventName": "test2",
+            "eventCompleted?": false
+        }
+    ]
 }

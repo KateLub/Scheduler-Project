@@ -5,6 +5,8 @@ import org.json.JSONObject;
 import persistance.Writable;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 // represents a list that has a name, and contains Events
@@ -76,14 +78,13 @@ public class EventList implements Writable {
     //MODIFIES: this
     //EFFECTS: sorts list in chronological order according to date of each Event
     public void sortEventList() {
-        for (int i = 0; i < (events.size() - 1); i++) {
-            Event e = events.get(i);
-            Event e2 = events.get(i + 1);
-            if (e.getEventDueDate().isAfter(e2.getEventDueDate())) {
-                events.remove(e);
-                events.add(e);
+        Collections.sort(events, new Comparator<Event>() {
+            @Override
+            public int compare(Event e1, Event e2) {
+                // compare two instance of `Event` and return `int` as result.
+                return e1.getEventDueDate().compareTo(e2.getEventDueDate());
             }
-        }
+        });
     }
 
     // The following two methods were adapted from WorkRoom class in:
