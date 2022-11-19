@@ -1,23 +1,23 @@
 {
-    "listName": "My Important Dates",
+    "listName": "Homework Due-Dates",
     "events": [
         {
-            "dueDate": "2022-11-06",
-            "eventDescription": "Optional Description",
-            "eventName": "test1",
-            "eventCompleted?": true
-        },
-        {
             "dueDate": "2022-11-07",
-            "eventDescription": "test description",
-            "eventName": "Midterm 1",
+            "eventDescription": "Computer science exam",
+            "eventName": "Midterm 2",
             "eventCompleted?": false
         },
         {
             "dueDate": "2022-11-09",
             "eventDescription": "Optional Description",
-            "eventName": "test2",
+            "eventName": "Math Questions",
             "eventCompleted?": false
+        },
+        {
+            "dueDate": "2022-12-09",
+            "eventDescription": "Optional Description",
+            "eventName": "English Essay",
+            "eventCompleted?": true
         }
     ]
 }
