@@ -1,7 +1,9 @@
 package ui.gui;
 
 import model.Event;
+import model.EventForLogging;
 import model.EventList;
+import model.EventLog;
 import persistance.JsonReadFromFile;
 import persistance.JsonWriteToFile;
 
@@ -65,10 +67,11 @@ public class MnemosyneApp {
                 int option = JOptionPane.showConfirmDialog(frame, "Would you like to save your work?");
                 if (option == JOptionPane.YES_OPTION) {
                     saveEventList();
-                    System.exit(0);
-                } else if (option == JOptionPane.NO_OPTION) {
-                    System.exit(0);
                 }
+                for (EventForLogging next : EventLog.getInstance()) {
+                    System.out.println(next.toString());
+                }
+                System.exit(0);
             }
         });
         frame.setSize(1000, 600);
@@ -308,5 +311,6 @@ public class MnemosyneApp {
                     "Unable to read from file: " + JSON_STORE, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
 }
 

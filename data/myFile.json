@@ -1,22 +1,16 @@
 {
-    "listName": "Homework Due-Dates",
+    "listName": "Due Dates",
     "events": [
         {
-            "dueDate": "2022-11-07",
-            "eventDescription": "Computer science exam",
-            "eventName": "Midterm 2",
+            "dueDate": "2022-11-01",
+            "eventDescription": "Optional Description",
+            "eventName": "Math Project",
             "eventCompleted?": false
         },
         {
-            "dueDate": "2022-11-09",
-            "eventDescription": "Optional Description",
-            "eventName": "Math Questions",
-            "eventCompleted?": false
-        },
-        {
-            "dueDate": "2022-12-09",
-            "eventDescription": "Optional Description",
-            "eventName": "English Essay",
+            "dueDate": "2022-12-01",
+            "eventDescription": "WRDS 150B",
+            "eventName": "English Project",
             "eventCompleted?": true
         }
     ]
