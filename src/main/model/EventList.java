@@ -36,7 +36,7 @@ public class EventList implements Writable {
     //setters
     public void setListName(String name) {
         listName = name;
-        EventLog.getInstance().logEvent(new EventForLogging("Event List" + this + " name set to "
+        EventLog.getInstance().logEvent(new EventForLogging("Event List name set to "
                 + this.listName));
     }
 
@@ -46,14 +46,14 @@ public class EventList implements Writable {
     public boolean addEventToList(Event e) {
         for (Event ev : events) {
             if (ev.equals(e)) {
-                EventLog.getInstance().logEvent(new EventForLogging("Event " + e
-                        + " was not added to list " + this + " due to duplication error"));
+                EventLog.getInstance().logEvent(new EventForLogging("Event " + e.getEventName()
+                        + " was not added to list due to duplication error"));
                 return false;
             }
         }
         events.add(e);
-        EventLog.getInstance().logEvent(new EventForLogging("Event " + e
-                + " was added to list " + this));
+        EventLog.getInstance().logEvent(new EventForLogging("Event " + e.getEventName()
+                + " was added to list"));
         return true;
     }
 
@@ -62,13 +62,11 @@ public class EventList implements Writable {
     public Event findEvent(String eventName) {
         for (Event e : events) {
             if (e.getEventName().equals(eventName)) {
-                EventLog.getInstance().logEvent(new EventForLogging("Event " + e
-                        + " was searched for and found in list " + this));
                 return e;
             }
         }
         EventLog.getInstance().logEvent(new EventForLogging("Event " + eventName
-                + " was searched for and not found in list " + this));
+                + " was searched for and not found in list"));
         return null;
     }
 
@@ -84,7 +82,7 @@ public class EventList implements Writable {
         } else {
             events.remove(result);
             EventLog.getInstance().logEvent(new EventForLogging("Attempt to remove Event "
-                    + eventName + " was successfully"));
+                    + eventName + " was successfull"));
             return true;
         }
     }
@@ -95,7 +93,6 @@ public class EventList implements Writable {
         Collections.sort(events, new Comparator<Event>() {
             @Override
             public int compare(Event e1, Event e2) {
-                EventLog.getInstance().logEvent(new EventForLogging("Event List " + this + " was sorted"));
                 return e1.getEventDueDate().compareTo(e2.getEventDueDate());
             }
         });

@@ -44,7 +44,7 @@ public class Event implements Writable {
     //EFFECT: change eventName to given name, logs name change
     public void changeEventName(String name) {
         eventName = name;
-        EventLog.getInstance().logEvent(new EventForLogging("Event " + this + " name changed to "
+        EventLog.getInstance().logEvent(new EventForLogging("Event name changed to "
                 + this.eventName));
     }
 
@@ -53,7 +53,7 @@ public class Event implements Writable {
     //EFFECT: change eventDueDate to given date, logs date change
     public void changeEventDueDate(String date) {
         eventDueDate = LocalDate.parse(date);
-        EventLog.getInstance().logEvent(new EventForLogging("Event " + this + " date changed to "
+        EventLog.getInstance().logEvent(new EventForLogging("Event " + this.eventName + " date changed to "
                 + this.eventDueDate));
     }
 
@@ -61,15 +61,15 @@ public class Event implements Writable {
     //EFFECT: change eventDescription to given description, logs description change
     public void changeEventDescription(String description) {
         eventDescription = description;
-        EventLog.getInstance().logEvent(new EventForLogging("Event " + this + " description changed to "
-                + this.eventDescription));
+        EventLog.getInstance().logEvent(new EventForLogging("Event " + this.eventName
+                + " description changed to " + this.eventDescription));
     }
 
     //MODIFIES: this
     //EFFECT: change status of isCompleted to true
     public void completeEvent() {
         isCompleted = true;
-        EventLog.getInstance().logEvent(new EventForLogging("Event " + this + " is completed"));
+        EventLog.getInstance().logEvent(new EventForLogging("Event " + this.eventName + " is completed"));
     }
 
     // The following method was adapted from Thingy class in:

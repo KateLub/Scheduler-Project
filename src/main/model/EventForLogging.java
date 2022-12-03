@@ -34,11 +34,9 @@ public class EventForLogging {
         if (other == null) {
             return false;
         }
-
         if (other.getClass() != this.getClass()) {
             return false;
         }
-
         EventForLogging otherEvent = (EventForLogging) other;
 
         return (this.dateLogged.equals(otherEvent.dateLogged)
