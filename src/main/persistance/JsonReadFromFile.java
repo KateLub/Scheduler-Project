@@ -30,7 +30,6 @@ public class JsonReadFromFile {
 
         return parseEventList(jsonObject);
     }
-
     // EFFECTS: reads source file as string and returns it
     private String readFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
