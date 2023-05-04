@@ -1,9 +1,29 @@
 {
-    "listName": "Summer Homework",
-    "events": [{
-        "dueDate": "2023-05-12",
-        "eventDescription": "Complete Essay",
-        "eventName": "English HW",
-        "eventCompleted?": true
-    }]
+    "listName": "UBC Due-Dates",
+    "events": [
+        {
+            "dueDate": "2022-11-07",
+            "eventDescription": "Computer Science 210",
+            "eventName": "Midterm2",
+            "eventCompleted?": true
+        },
+        {
+            "dueDate": "2022-12-16",
+            "eventDescription": "Biology 200",
+            "eventName": "Final Project",
+            "eventCompleted?": false
+        },
+        {
+            "dueDate": "2022-12-17",
+            "eventDescription": "English 110",
+            "eventName": "Physics Final",
+            "eventCompleted?": false
+        },
+        {
+            "dueDate": "2022-12-21",
+            "eventDescription": "Physics 107",
+            "eventName": "Final Exam",
+            "eventCompleted?": false
+        }
+    ]
 }
