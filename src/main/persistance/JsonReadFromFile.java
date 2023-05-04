@@ -57,6 +57,7 @@ public class JsonReadFromFile {
             JSONObject nextEvent = (JSONObject) json;
             addEachEventFromList(el, nextEvent);
         }
+
     }
 
     // MODIFIES: el
